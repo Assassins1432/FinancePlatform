@@ -29,14 +29,6 @@ Este proyecto es una plataforma financiera construida con Node.js, Express y Mon
     npm install
     ```
 
-4. Configura las variables de entorno:
-
-   Crea un archivo `.env` en la raíz del proyecto y añade las siguientes variables:
-
-    ```env
-    MONGO_URI=mongodb+srv://prueba:Prueba1432XD@cluster0.ix6spj2.mongodb.net/FinanceDataPlatform?retryWrites=true&w=majority&appName=Cluster0
-    ```
-
 ## Uso
 
 1. Inicia el servidor:
