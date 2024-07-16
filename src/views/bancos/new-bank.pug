@@ -1,0 +1,29 @@
+extends ../layouts/layout
+
+block sidebar
+    include ../includes/sidebar
+
+block navbar
+    include ../includes/navbar
+
+block content
+    .main-content
+        h1 Añadir Nuevo Banco
+        form(action="/bancos/new-bank" method="POST")
+            .mb-3
+                label(for="name") Nombre
+                input.form-control(type="text" name="name" required)
+            .mb-3
+                label(for="initialBalance") Saldo Inicial
+                input.form-control(type="number" name="initialBalance")
+            .mb-3
+                label(for="displayOrderOption") Orden de Visualización
+                select.form-control(name="displayOrderOption" required)
+                    option(value="Primero") Primero
+                    option(value="Último") Último
+                    each banco in bancos
+                        option(value=`Después de ${banco._id}`) Después de #{banco.name}
+            button.btn.btn-primary(type="submit") Añadir Banco
+
+block footer
+    include ../includes/footer

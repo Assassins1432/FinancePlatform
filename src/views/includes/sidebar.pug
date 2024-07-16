@@ -1,0 +1,38 @@
+// Sidebar
+.sidebar
+    a.logo(href="#")
+        i.bx.bx-code-alt
+        .logo-name
+            span TIEF
+            | UNAB
+    ul.side-menu
+        li: a(href="/dash")
+            i.bx.bxs-dashboard
+            | Dashboard
+        li: a(href="/contabilidades")
+            i.bx.bxs-book
+            | Contabilidades
+        li.active: a(href="/movimientos")
+            i.bx.bxs-data
+            | Movimientos
+        li: a(href="/categorias")
+            i.bx.bxs-collection
+            | Categorías
+        li: a(href="/bancos")
+            i.bx.bxs-bank
+            | Bancos
+        li: a(href="/etiquetas")
+            i.bx.bxs-tag
+            | Etiquetas
+        li: a(href="/terceros")
+            i.bx.bxs-user-account
+            | Terceros
+
+    ul.side-menu
+        li: a(href="/cuenta")
+            i.bx.bxs-user
+            | Cuenta
+        li
+            a.logout(href="/users/logout")
+                i.bx.bx-log-out-circle
+                | Logout

@@ -1,0 +1,97 @@
+// Main Content
+.content
+    main
+        .header
+            .left
+                h1 Dashboard
+                ul.breadcrumb
+                    li: a(href="#") Analytics
+                    | /
+                    li: a.active(href="#") Finance
+            a.report(href="#")
+                i.bx.bx-cloud-download
+                span Download CSV
+
+        // Insights
+        ul.insights
+            li
+                i.bx.bx-calendar-check
+                .info
+                    h3 1,074
+                    p Paid Order
+            li
+                i.bx.bx-show-alt
+                .info
+                    h3 3,944
+                    p Site Visit
+            li
+                i.bx.bx-line-chart
+                .info
+                    h3 14,721
+                    p Searches
+            li
+                i.bx.bx-dollar-circle
+                .info
+                    h3 $6,742
+                    p Total Sales
+
+        // End of Insights
+        .bottom-data
+            .orders
+                .header
+                    i.bx.bx-receipt
+                    h3 Recent Orders
+                    i.bx.bx-filter
+                    i.bx.bx-search
+                table
+                    thead
+                        tr
+                            th User
+                            th Order Date
+                            th Status
+                    tbody
+                        tr
+                            td
+                                img(src="../assets/img/dashboard/profile-1.jpg")
+                                p John Doe
+                            td 14-08-2023
+                            td
+                                span.status.completed Completed
+                        tr
+                            td
+                                img(src="../assets/img/dashboard/profile-1.jpg")
+                                p John Doe
+                            td 14-08-2023
+                            td
+                                span.status.pending Pending
+                        tr
+                            td
+                                img(src="../assets/img/dashboard/profile-1.jpg")
+                                p John Doe
+                            td 14-08-2023
+                            td
+                                span.status.process Processing
+
+            // Reminders
+            .reminders
+                .header
+                    i.bx.bx-note
+                    h3 Reminders
+                    i.bx.bx-filter
+                    i.bx.bx-plus
+                ul.task-list
+                    li.completed
+                        .task-title
+                            i.bx.bx-check-circle
+                            p Start Our Meeting
+                        i.bx.bx-dots-vertical-rounded
+                    li.completed
+                        .task-title
+                            i.bx.bx-check-circle
+                            p Analyse Our Site
+                        i.bx.bx-dots-vertical-rounded
+                    li.not-completed
+                        .task-title
+                            i.bx.bx-x-circle
+                            p Play Football
+                        i.bx.bx-dots-vertical-rounded

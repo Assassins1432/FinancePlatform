@@ -1,0 +1,34 @@
+extends ../layouts/layout
+
+block sidebar
+    include ../includes/sidebar
+
+block navbar
+    include ../includes/navbar
+
+block content
+    .main-content
+        h1 Todas las Etiquetas
+        if etiquetas.length === 0
+            p No hay etiquetas disponibles.
+            a.btn.btn-primary(href='/etiquetas/add') Añadir nueva etiqueta
+        else
+            a.btn.btn-primary(href='/etiquetas/add') Añadir nueva etiqueta
+            table
+                thead
+                    tr
+                        th Nombre
+                        th Orden de Visualización
+                        th Acciones
+                tbody
+                    each etiqueta in etiquetas
+                        tr
+                            td= etiqueta.name
+                            td= etiqueta.displayOrder
+                            td
+                                a(href=`/etiquetas/edit/${etiqueta._id}` class="btn btn-primary") Editar
+                                form(action=`/etiquetas/delete/${etiqueta._id}?_method=DELETE` method="POST" style="display:inline")
+                                    button(type="submit" class="btn btn-danger") Eliminar
+
+block footer
+    include ../includes/footer

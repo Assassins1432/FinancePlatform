@@ -1,0 +1,21 @@
+extends ../layouts/layout
+block test
+    link(rel="stylesheet", href="/css/404.css")
+
+block content
+    .noise
+    .overlay
+    .terminal
+        h1
+            | Error
+            span.errorcode 404
+        p.output
+            | Es posible que la página que estás buscando haya sido eliminada, haya cambiado de nombre o no esté disponible temporalmente.
+        p.output
+            | Por favor intenta
+            a(href="javascript:history.back()" class="back-button") Volver
+            |  o&nbsp;
+            a(href='/') Volver al Home
+            | .
+        p.output Buena suerte.
+

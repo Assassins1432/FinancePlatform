@@ -1,0 +1,39 @@
+extends ../layouts/layout
+
+block sidebar
+    include ../includes/sidebar
+
+block navbar
+    include ../includes/navbar
+
+block content
+    .main-content
+        h1 Todas las Contabilidades
+        if contabilidades.length === 0
+            p No hay contabilidades disponibles.
+            a.btn.btn-primary(href='/contabilidades/add') Añadir nueva contabilidad
+        else
+            a.btn.btn-primary(href='/contabilidades/add') Añadir nueva contabilidad
+            table
+                thead
+                    tr
+                        th Nombre
+                        th Descripción
+                        th Acciones
+                tbody
+                    each contabilidad in contabilidades
+                        tr
+                            td= contabilidad.name
+                            td= contabilidad.description
+                            td.actions
+                                if contabilidad.isActive
+                                    span.badge.bg-success Activa
+                                else
+                                    form(action=`/contabilidades/activate/${contabilidad._id}` method="POST" style="display:inline")
+                                        button(type="submit" class="btn btn-success") Activar
+                                a.btn.btn-primary(href=`/contabilidades/edit/${contabilidad._id}`) Editar
+                                form(action=`/contabilidades/delete/${contabilidad._id}?_method=DELETE` method="POST" style="display:inline")
+                                    button(type="submit" class="btn btn-danger") Eliminar
+
+block footer
+    include ../includes/footer

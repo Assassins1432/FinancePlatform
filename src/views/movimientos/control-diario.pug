@@ -1,0 +1,42 @@
+extends ../layouts/layout
+
+block sidebar
+    include ../includes/sidebar
+
+block navbar
+    include ../includes/navbar
+
+block content
+    .main-content
+        h1 Control Diario
+        a.btn.btn-primary(href="/movimientos/add") Añadir nuevo movimiento
+        table.table
+            thead
+                tr
+                    th Fecha
+                    th Mes
+                    th Descripción
+                    th Categoría
+                    th Etiqueta
+                    th Monto
+                    th Banco
+                    th Tercero
+                    th Tipo de Movimiento
+                    th Balance Total
+            tbody
+                each movimiento in movimientos
+                    tr
+                        td= movimiento.fecha.toDateString()
+                        td= new Date(movimiento.fecha).toLocaleString('default', { month: 'long' })
+                        td= movimiento.descripcion
+                        td= movimiento.categoria ? movimiento.categoria.description : 'N/A'
+                        td= movimiento.etiqueta ? movimiento.etiqueta.name : 'N/A'
+                        td= movimiento.monto
+                        td= movimiento.banco ? movimiento.banco.name : 'N/A'
+                        td= movimiento.tercero? movimiento.tercero.name : 'N/A'
+                        td= movimiento.tipoMonto
+                        td= movimiento.balanceTotal
+
+block footer
+
+    include ../includes/footer

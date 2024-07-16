@@ -1,0 +1,177 @@
+doctype html
+head
+    meta(charset='utf-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    meta(name='description' content='')
+    meta(name='author' content='')
+    title Agency - Start Bootstrap Theme
+    // Favicon
+    link(rel='icon' type='image/x-icon' href='/assets/favicon.ico')
+    // Font Awesome icons (free version)
+    script(src='https://use.fontawesome.com/releases/v6.3.0/js/all.js' crossorigin='anonymous')
+    // Google fonts
+    link(href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css')
+    link(href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css')
+    // Core theme CSS (includes Bootstrap)
+    link(href='/css/styles.css' rel='stylesheet')
+// Navigation
+nav#mainNav.navbar.navbar-expand-lg.navbar-dark.fixed-top
+    .container
+        a.navbar-brand(href='#page-top')
+            img(src='/assets/img/TIEFUNAB.webp' alt='...')
+        button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarResponsive' aria-controls='navbarResponsive' aria-expanded='false' aria-label='Toggle navigation')
+            | Menu
+            i.fas.fa-bars.ms-1
+        #navbarResponsive.collapse.navbar-collapse
+            ul.navbar-nav.text-uppercase.ms-auto.py-4.py-lg-0
+                li.nav-item
+                    a.nav-link(href='#services') Servicios
+                li.nav-item
+                    a.nav-link(href='#about') Acerca
+                li.nav-item
+                    a.nav-link(href='#team') Equipo
+                li.nav-item
+                    a.nav-link(href='/contact') Contacto
+                li.nav-item
+                    a.nav-link(href='/users/signup') Register
+                li.nav-item
+                    a.nav-link(href='/users/signin') Login
+// Masthead
+header.masthead
+    .container
+        .masthead-subheading &iexcl;Bienvenido a la Plataforma financiera!
+        .masthead-heading.text-uppercase Es un placer conocerte
+        a.btn.btn-primary.btn-xl.text-uppercase(href='#services') Adentrarse
+// Services
+section#services.page-section
+    .container
+        .text-center
+            h2.section-heading.text-uppercase Servicios
+            h3.section-subheading.text-muted Lo que la plataforma te ofrece.
+        .row.text-center
+            .col-md-4
+                span.fa-stack.fa-4x
+                    i.fas.fa-circle.fa-stack-2x.text-primary
+                    i.fas.fa-solid.fa-coins.fa-stack-1x.fa-inverse
+                h4.my-3 Gesti&oacute;n de ingresos
+                p.text-muted
+                    | La plataforma cuenta con una interfaz amigable e intuitiva que facilita la gesti&oacute;n de ingresos y egresos.
+            .col-md-4
+                span.fa-stack.fa-4x
+                    i.fas.fa-circle.fa-stack-2x.text-primary
+                    i.fas.fa-laptop.fa-stack-1x.fa-inverse
+                h4.my-3 Dise&ntilde;o Adaptativo
+                p.text-muted
+                    | La plataforma se adapta a tus dispositivos favoritos y se ajusta a diferentes tama&ntilde;os y resoluciones.
+            .col-md-4
+                span.fa-stack.fa-4x
+                    i.fas.fa-circle.fa-stack-2x.text-primary
+                    i.fas.fa-lock.fa-stack-1x.fa-inverse
+                h4.my-3 Seguridad de los datos
+                p.text-muted
+                    | La plataforma encripta todos tus datos y registros, de forma que puedes mantener tu privacidad a salvo.
+// About
+section#about.page-section
+    .container
+        .text-center
+            h2.section-heading.text-uppercase Acerca de TIEF-UNAB
+            h3.section-subheading.text-muted Donde comenz&oacute; la idea.
+        ul.timeline
+            li
+                .timeline-image
+                    img.rounded-circle.img-fluid(src='/assets/img/about/1.jpg' alt='...')
+                .timeline-panel
+                    .timeline-heading
+                        h4 2022
+                        h4.subheading Indagaci&oacute;n
+                    .timeline-body
+                        p.text-muted
+                            | Se comenz&oacute; la b&uacute;squeda de una alternativa al papel para la gesti&oacute;n de los ingresos, las compras, los gastos, la lista de pendientes y que al mismo tiempo esto involucrara una retroalimentaci&oacute;n activa.
+            li.timeline-inverted
+                .timeline-image
+                    img.rounded-circle.img-fluid(src='/assets/img/about/2.jpg' alt='...')
+                .timeline-panel
+                    .timeline-heading
+                        h4 Agosto 2023
+                        h4.subheading Planteamiento de propuesta
+                    .timeline-body
+                        p.text-muted
+                            | Se dio la oportunidad de crear algo que mejorara la calidad de vida de las personas y al mismo tiempo sirviera como un proyecto de titulaci&oacute;n.
+            li
+                .timeline-image
+                    img.rounded-circle.img-fluid(src='/assets/img/about/3.jpg' alt='...')
+                .timeline-panel
+                    .timeline-heading
+                        h4 Marzo 2024
+                        h4.subheading Desarrollo de la plataforma
+                    .timeline-body
+                        p.text-muted
+                            | Se da inicio al desarrollo de la plataforma como parte de la planificaci&oacute;n acad&eacute;mica.
+            li.timeline-inverted
+                .timeline-image
+                    h4
+                        | &iexcl;La
+                        br
+                        |                                 Historia
+                        br
+                        |                                 Continua!
+// Team
+section#team.page-section.bg-light
+    .container
+        .text-center
+            h2.section-heading.text-uppercase El equipo
+            h3.section-subheading.text-muted Detras de todo el desarrollo.
+        .row
+            .col-lg-4
+            .col-lg-4
+                .team-member
+                    img.mx-auto.rounded-circle(src='/assets/img/team/2.jpg' alt='...')
+                    h4 Fabi&aacute;n Mu&ntilde;oz
+                    p.text-muted Estudiante UNAB
+                    a.btn.btn-dark.btn-social.mx-2(href='https://github.com/Assassins1432' aria-label='Fabián Muñoz Github Profile')
+                        i.fab.fa-brands.fa-github
+                    a.btn.btn-dark.btn-social.mx-2(href='https://web.facebook.com/Assassins1432/' aria-label='Fabián Muñoz Facebook Profile')
+                        i.fab.fa-facebook-f
+                    a.btn.btn-dark.btn-social.mx-2(href='https://www.linkedin.com/in/fabi%C3%A1n-mu%C3%B1oz-585255256/' aria-label='Fabián Muñoz LinkedIn Profile')
+                        i.fab.fa-linkedin-in
+            .col-lg-4
+        .row
+            .col-lg-8.mx-auto.text-center
+                p.large.text-muted
+                    | Enfocado en entregar lo mejor de uno mismo y proporcionar soluciones atractivas y funcionales.
+// Clients
+.py-5
+    .container
+        .row.align-items-center
+            .col-md-3.col-sm-6.my-3
+                a(href='#!')
+                    img.img-fluid.img-brand.d-block.mx-auto(src='/assets/img/logos/microsoft.svg' alt='...' aria-label='Microsoft Logo')
+            .col-md-3.col-sm-6.my-3
+                a(href='#!')
+                    img.img-fluid.img-brand.d-block.mx-auto(src='/assets/img/logos/google.svg' alt='...' aria-label='Google Logo')
+            .col-md-3.col-sm-6.my-3
+                a(href='#!')
+                    img.img-fluid.img-brand.d-block.mx-auto(src='/assets/img/logos/facebook.svg' alt='...' aria-label='Facebook Logo')
+            .col-md-3.col-sm-6.my-3
+                a(href='#!')
+                    img.img-fluid.img-brand.d-block.mx-auto(src='/assets/img/logos/ibm.svg' alt='...' aria-label='IBM Logo')
+// Footer
+footer.footer.py-4
+    .container
+        .row.align-items-center
+            .col-lg-4.text-lg-start Copyright &copy; Your Website 2023
+            .col-lg-4.my-3.my-lg-0
+                a.btn.btn-dark.btn-social.mx-2(href='#!' aria-label='Twitter')
+                    i.fab.fa-twitter
+                a.btn.btn-dark.btn-social.mx-2(href='#!' aria-label='Facebook')
+                    i.fab.fa-facebook-f
+                a.btn.btn-dark.btn-social.mx-2(href='#!' aria-label='LinkedIn')
+                    i.fab.fa-linkedin-in
+            .col-lg-4.text-lg-end
+                a.link-dark.text-decoration-none.me-3(href='#!') Privacy Policy
+                a.link-dark.text-decoration-none(href='#!') Terms of Use
+// Bootstrap core JS
+script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js')
+// Core theme JS
+script(src='/js/scripts.js')
+script(src='https://cdn.startbootstrap.com/sb-forms-latest.js')

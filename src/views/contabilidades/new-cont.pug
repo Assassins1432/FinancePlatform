@@ -1,0 +1,27 @@
+extends ../layouts/layout
+
+block sidebar
+
+    include ../includes/sidebar
+
+block navbar
+
+    include ../includes/navbar
+
+block content
+    .col-md-4.mx-auto
+        .card.text-center
+            h1 Nueva Contabilidad
+            .card-body
+                form(action="/contabilidades/new-cont" method="POST")
+                    .form-group
+                        input(type="text" name="name" required placeholder="Nombre")
+                    .form-group
+                        input(type="text" name="description" required placeholder="Descripcion")
+                    .form-group
+                        .btn
+                            button(type="submit") Crear Contabilidad
+
+block footer
+
+    include ../includes/footer

@@ -1,0 +1,129 @@
+/* contabilidades.css */
+
+/* General styles for the new page */
+.main-content {
+    padding-top: 50px;
+    padding-left: 250px;
+    padding-right: 250px;
+}
+
+.main-content h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.main-content table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--grey);
+}
+
+.main-content table th, .main-content table td {
+    padding: 12px;
+    text-align: center; /* Centra el texto */
+    border: 1px solid var(--dark-grey);
+    background-color: var(--light);
+}
+
+.main-content table th {
+    background-color: var(--dark-grey);
+    color: var(--light);
+}
+
+.main-content table td.actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Espacio entre los botones */
+}
+
+.main-content .btn {
+    padding: 6px 12px;
+    border-radius: 4px;
+    text-decoration: none;
+    color: var(--light);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center; /* Centra el contenido del botón */
+    margin: 5px 0; /* Añade espacio entre los botones */
+    font-size: 14px; /* Ajusta el tamaño de la fuente */
+}
+
+.main-content .btn-primary {
+    background: var(--primary);
+}
+
+.main-content .btn-danger {
+    background: var(--danger);
+}
+
+.main-content .btn-success {
+    background: var(--success); /* Añadir color de fondo para el botón de activar */
+}
+
+.main-content .btn:hover {
+    opacity: 0.8;
+}
+
+.main-content .badge {
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    text-transform: uppercase;
+    display: inline-block;
+}
+
+.main-content .badge.bg-success {
+    background-color: var(--success); /* Color de fondo para la etiqueta activa */
+    color: var(--light); /* Color del texto para la etiqueta activa */
+}
+
+.box-new-cat{
+    margin-bottom: 15px;
+}
+
+/* contabilidad.css */
+
+.card.text-center {
+    margin-top: 25px;
+    margin-left: 235px;
+    background-color: #f8f9fa;
+    border-radius: 0.25rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card h1 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.card .form-group {
+    margin-bottom: 1rem;
+}
+
+.card .form-group input {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 0.5rem;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+}
+
+.card .btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card .btn button {
+    padding: 0.5rem 1rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+}
+
+.card .btn button:hover {
+    background-color: #0056b3;
+}
+

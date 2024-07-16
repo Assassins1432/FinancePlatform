@@ -1,0 +1,30 @@
+extends ../layouts/layout
+
+block sidebar
+    include ../includes/sidebar
+
+block navbar
+    include ../includes/navbar
+
+block content
+    .main-content
+        h1 Editar Banco
+        form(action=`/bancos/edit-bank/${banco._id}?_method=PUT` method="POST")
+            .mb-3
+                label(for="name") Nombre
+                input.form-control(type="text" name="name" value=banco.name required)
+            .mb-3
+                label(for="initialBalance") Saldo Inicial
+                input.form-control(type="number" name="initialBalance" value=banco.initialBalance)
+            .mb-3
+                label(for="displayOrderOption") Orden de Visualización
+                select.form-control(name="displayOrderOption" required)
+                    option(value="Primero") Primero
+                    option(value="Último") Último
+                    each otherBanco in bancos
+                        if otherBanco._id.toString() !== banco._id.toString()
+                            option(value=`Después de ${otherBanco._id}`) Después de #{otherBanco.name}
+            button.btn.btn-primary(type="submit") Actualizar Banco
+
+block footer
+    include ../includes/footer

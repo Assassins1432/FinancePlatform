@@ -1,0 +1,27 @@
+extends ../layouts/layout
+
+block sidebar
+    include ../includes/sidebar
+
+block navbar
+    include ../includes/navbar
+
+block content
+    .main-content
+        h1 Editar Etiqueta
+        form(action=`/etiquetas/edit-etiq/${etiqueta._id}?_method=PUT` method="POST")
+            .mb-3
+                label(for="name") Nombre
+                input.form-control(type="text" name="name" value=etiqueta.name required)
+            .mb-3
+                label(for="displayOrder") Orden de Visualización
+                select.form-control(name="displayOrderOption")
+                    option(value="Primero") Primero
+                    option(value="Último") Último
+                    each etiq in etiquetas
+                        if etiq._id.toString() !== etiqueta._id.toString()
+                            option(value=`Después de ${etiq._id}`) Después de #{etiq.name}
+            button.btn.btn-primary(type="submit") Actualizar
+
+block footer
+    include ../includes/footer

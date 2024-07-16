@@ -1,0 +1,36 @@
+extends ../layouts/layout
+
+block sidebar
+    include ../includes/sidebar
+
+block navbar
+    include ../includes/navbar
+
+block content
+    .main-content
+        h1 Todos los Bancos
+        if bancos.length === 0
+            p No hay bancos disponibles.
+            a.btn.btn-primary(href='/bancos/add') Añadir nuevo banco
+        else
+            a.btn.btn-primary(href='/bancos/add') Añadir nuevo banco
+            table
+                thead
+                    tr
+                        th Nombre
+                        th Saldo Inicial
+                        th Orden de Visualización
+                        th Acciones
+                tbody
+                    each banco in bancos
+                        tr
+                            td= banco.name
+                            td= banco.initialBalance
+                            td= banco.displayOrder
+                            td
+                                a(href=`/bancos/edit/${banco._id}` class="btn btn-primary") Editar
+                                form(action=`/bancos/delete/${banco._id}?_method=DELETE` method="POST" style="display:inline")
+                                    button(type="submit" class="btn btn-danger") Eliminar
+
+block footer
+    include ../includes/footer

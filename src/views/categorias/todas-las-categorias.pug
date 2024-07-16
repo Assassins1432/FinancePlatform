@@ -1,0 +1,34 @@
+extends ../layouts/layout
+
+block sidebar
+    include ../includes/sidebar
+
+block navbar
+    include ../includes/navbar
+
+block content
+    .main-content
+        h1 Todas las Categorías
+        if categorias.length === 0
+            p No hay categorías disponibles.
+            a.btn.btn-primary(href='/categorias/add') Añadir nueva categoría
+        else
+            a.btn.btn-primary(href='/categorias/add') Añadir nueva categoría
+            table.table.table-striped
+                thead
+                    tr
+                        th Descripción
+                        th Orden
+                        th Acciones
+                tbody
+                    each categoria in categorias
+                        tr
+                            td= categoria.description
+                            td= categoria.displayOrder
+                            td
+                                a.btn.btn-primary(href=`/categorias/edit/${categoria._id}`) Editar
+                                form(action=`/categorias/delete/${categoria._id}?_method=DELETE` method='POST' style='display:inline')
+                                    button.btn.btn-danger(type='submit') Eliminar
+
+block footer
+    include ../includes/footer

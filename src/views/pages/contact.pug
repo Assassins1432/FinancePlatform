@@ -1,0 +1,71 @@
+doctype html
+// (Página de contacto)
+head
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible' content='IE=edge')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title Contact Form
+    link(rel='stylesheet' href='../css/contactStyle.css')
+.background
+header
+    .container
+        ul
+            li
+                a.logo(href='/')
+                    .images
+                        img.logo-forDark(src='../assets/img/contact/logo-forDark.png' title='TIEF-UNAB')
+                        img.logo-forLight(src='../assets/img/contact/logo-forLight.png' title='TIEF-UNAB')
+                    h2
+                        | TIEF-UNAB
+                        span .
+            li
+                a.nav-link(href='/') Home
+            li
+                a.nav-link(href='users/signup') Unirse
+            li
+                span.nav-link.theme-toggle
+                    i.fa-solid.fa-sun
+                    i.fa-solid.fa-moon
+main
+    section.contact
+        .container
+            .left
+                .form-wrapper
+                    .contact-heading
+                        h1
+                            | Vamos a trabajar juntos
+                            span .
+                        p.text
+                            | O contactanos via :
+                            a(href='mailto:TIEFUNAB@gmail.com') tiefUNAB@gmail.com
+                    .notification-container
+                    form.contact-form(action='https://api.web3forms.com/submit' method='POST')
+                        input(type='hidden' name='access_key' value='cdc2694a-6ac6-44c1-8534-8c0bac661f32')
+                        .input-wrap
+                            input.contact-input(autocomplete='off' name='Primer Nombre' type='text' required='' pattern="[A-Za-zÀ-ÿ '-]{2,}")
+                            label Primer Nombre
+                            i.icon.fa-solid.fa-address-card
+                        .input-wrap
+                            input.contact-input(autocomplete='off' name='Primer Apellido' type='text' required='' pattern="[A-Za-zÀ-ÿ '-]{2,}")
+                            label Primer Apellido
+                            i.icon.fa-solid.fa-address-card
+                        .input-wrap.w-100
+                            input.contact-input(autocomplete='off' name='Email' type='text' required='')
+                            label Email
+                            i.icon.fa-solid.fa-envelope
+                        .input-wrap.textarea.w-100
+                            textarea.contact-input(name='Mensaje' auto-complete='off' required='')
+                            label Mensaje
+                            i.icon.fa-solid.fa-inbox
+                        .contact-buttons
+                            input.btn(type='submit' value='Enviar Mensaje')
+            .right
+                .image-wrapper
+                    img.img(src='/assets/img/contact/lake.jpg')
+                    .wave-wrap
+                        svg.wave(viewbox='0 0 783 1536' fill='none' xmlns='http://www.w3.org/2000/svg')
+                            path#wave(d='M236.705 1356.18C200.542 1483.72 64.5004 1528.54 1 1535V1H770.538C793.858 63.1213 797.23 196.197 624.165 231.531C407.833 275.698 274.374 331.715 450.884 568.709C627.393 805.704 510.079 815.399 347.561 939.282C185.043 1063.17 281.908 1196.74 236.705 1356.18Z')
+                    svg.dashed-wave(viewbox='0 0 345 877' fill='none' xmlns='http://www.w3.org/2000/svg')
+                        path#dashed-wave(d='M0.5 876C25.6667 836.167 73.2 739.8 62 673C48 589.5 35.5 499.5 125.5 462C215.5 424.5 150 365 87 333.5C24 302 44 237.5 125.5 213.5C207 189.5 307 138.5 246 87C185 35.5 297 1 344.5 1')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/js/all.min.js')
+script(src='/js/contactScript.js')

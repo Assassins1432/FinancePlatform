@@ -1,0 +1,27 @@
+extends ../layouts/layout
+
+block sidebar
+    include ../includes/sidebar
+
+block navbar
+    include ../includes/navbar
+
+block content
+    .main-content
+        h1 Editar Categoría
+        form(action=`/categorias/edit/${category._id}?_method=PUT` method='POST')
+            .mb-3
+                label(for='description') Descripción
+                input.form-control(type='text' name='description' value=category.description required)
+            .mb-3
+                label(for='displayOrderOption') Orden de Visualización
+                select.form-control(name='displayOrderOption' required)
+                    option(value='Primero') Primero
+                    option(value='Último') Último
+                    each categoria in categorias
+                        if categoria._id.toString() !== category._id.toString()
+                            option(value=`Después de ${categoria._id}`) Después de #{categoria.description}
+            button.btn.btn-primary(type='submit') Aceptar
+
+block footer
+    include ../includes/footer

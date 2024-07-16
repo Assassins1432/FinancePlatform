@@ -1,0 +1,42 @@
+extends ../layouts/layout
+
+block sidebar
+
+    include ../includes/sidebar
+
+block navbar
+
+    include ../includes/navbar
+
+block content
+    .main-content
+        h1 Todos los Movimientos
+        if movimientos.length === 0
+            p No hay movimientos disponibles.
+            a.btn.btn-primary(href='/movimientos/add') Añadir nuevo movimiento
+        else
+            a.btn.btn-primary(href='/movimientos/add') Añadir nuevo movimiento
+            a.btn.btn-primary(href="/movimientos/control-diario") Control diario
+            table
+                thead
+                    tr
+                        th Monto
+                        th Tipo de Monto
+                        th Fecha
+                        th Descripción
+                        th Acciones
+                tbody
+                    each movimiento in movimientos
+                        tr
+                            td= movimiento.monto
+                            td= movimiento.tipoMonto
+                            td= movimiento.fecha.toDateString()
+                            td= movimiento.descripcion
+                            td
+                                a(href=`/movimientos/edit/${movimiento._id}` class="btn btn-primary") Editar
+                                form(action=`/movimientos/delete/${movimiento._id}?_method=DELETE` method="POST" style="display:inline")
+                                    button(type="submit" class="btn btn-danger") Eliminar
+
+block footer
+
+    include ../includes/footer

@@ -1,0 +1,22 @@
+if success_msg
+    .alert.alert-success.alert-dismissible.fade.show(role='alert')
+        | #{success_msg}
+        button(type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close')
+if error_msg
+    .alert.alert-danger.alert-dismissible.fade.show(role='alert')
+        | #{error_msg}
+        button(type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close')
+if error
+    .alert.alert-danger.alert-dismissible.fade.show(role='alert')
+        | #{error}
+        button(type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close')
+
+//- messages.pug
+if messages.length > 0
+    each message in messages
+        .alert(class=message.type)
+            = message.message
+    script.
+        setTimeout(() => {
+            document.querySelectorAll('.alert').forEach(el => el.remove());
+        }, 3000);

@@ -1,0 +1,133 @@
+extends ../layouts/layout
+
+block sidebar
+    include ../includes/sidebar
+
+block navbar
+    include ../includes/navbar
+
+block content
+    .main-content
+        h1 Nuevo Movimiento
+        form(action="/movimientos/new-mov" method="POST")
+            .mb-3
+                label(for='monto') Monto
+                input.form-control(type='number' name='monto' required)
+
+            .mb-3
+                label(for='tipoMonto') Tipo de Monto
+                select.form-control(name='tipoMonto' required)
+                    option(value='Gasto') Gasto
+                    option(value='Ingreso') Ingreso
+                    option(value='Traspaso') Traspaso
+
+            .mb-3
+                label(for='fecha') Fecha del Movimiento
+                input.form-control(type='date' name='fecha' required)
+
+            .mb-3
+                label(for='descripcion') Descripción
+                textarea.form-control(name='descripcion' required)
+
+            //- Opciones dinámicas según el tipo de monto seleccionado
+            .dynamic-options
+
+            button.btn.btn-primary(type="submit") Crear Movimiento
+
+block footer
+    include ../includes/footer
+
+block scripts
+    script.
+        document.addEventListener('DOMContentLoaded', () => {
+            const tipoMontoSelect = document.querySelector('select[name="tipoMonto"]');
+            const dynamicOptionsDiv = document.querySelector('.dynamic-options');
+
+            const bancos = !{JSON.stringify(bancos)};
+            const categorias = !{JSON.stringify(categorias)};
+            const etiquetas = !{JSON.stringify(etiquetas)};
+            const terceros = !{JSON.stringify(terceros)};
+
+            const createOptions = (items) => items.map(item => `<option value="${item._id}">${item.name || item.description}</option>`).join('');
+
+            tipoMontoSelect.addEventListener('change', async () => {
+                const tipoMonto = tipoMontoSelect.value;
+                let html = '';
+
+                if (tipoMonto === 'Ingreso') {
+                    html += `
+                        <div class="mb-3">
+                            <label for="paymentMethod">¿Cómo te pagan?</label>
+                            <select class="form-control" name="banco" required>
+                                ${createOptions(bancos)}
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="categoria">Clasificación del Movimiento</label>
+                            <select class="form-control" name="categoria" required>
+                                ${createOptions(categorias)}
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="etiqueta">Etiqueta de Agrupación</label>
+                            <select class="form-control" name="etiqueta" required>
+                                ${createOptions(etiquetas)}
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="tercero">¿Quién paga?</label>
+                            <select class="form-control" name="tercero" required>
+                                ${createOptions(terceros)}
+                            </select>
+                        </div>
+                    `;
+                } else if (tipoMonto === 'Gasto') {
+                    html += `
+                        <div class="mb-3">
+                            <label for="paymentMethod">¿Cómo pagas?</label>
+                            <select class="form-control" name="banco" required>
+                                ${createOptions(bancos)}
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="categoria">Clasificación del Movimiento</label>
+                            <select class="form-control" name="categoria" required>
+                                ${createOptions(categorias)}
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="etiqueta">Etiqueta de Agrupación</label>
+                            <select class="form-control" name="etiqueta" required>
+                                ${createOptions(etiquetas)}
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="tercero">¿A quién pagas?</label>
+                            <select class="form-control" name="tercero" required>
+                                ${createOptions(terceros)}
+                            </select>
+                        </div>
+                    `;
+                } else if (tipoMonto === 'Traspaso') {
+                    html += `
+                        <div class="mb-3">
+                            <label for="cuentaOrigen">Cuenta de Origen</label>
+                            <select class="form-control" name="cuentaOrigen" required>
+                                ${createOptions(bancos)}
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="cuentaDestino">Cuenta de Destino</label>
+                            <select class="form-control" name="cuentaDestino" required>
+                                ${createOptions(bancos)}
+                            </select>
+                        </div>
+                    `;
+                }
+
+                dynamicOptionsDiv.innerHTML = html;
+            });
+
+            // Trigger change event on page load to display the correct options
+            tipoMontoSelect.dispatchEvent(new Event('change'));
+        });

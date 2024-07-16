@@ -1,0 +1,136 @@
+extends ../layouts/layout
+
+block sidebar
+    include ../includes/sidebar
+
+block navbar
+    include ../includes/navbar
+
+block content
+    .main-content
+        h1 Editar Movimiento
+        form(action=`/movimientos/edit-mov/${movimiento._id}?_method=PUT` method="POST")
+            .mb-3
+                label(for='monto') Monto
+                input.form-control(type='number' name='monto' value=movimiento.monto required)
+
+            .mb-3
+                label(for='tipoMonto') Tipo de Monto
+                select.form-control(name='tipoMonto' required)
+                    option(value='Gasto' selected=movimiento.tipoMonto === 'Gasto') Gasto
+                    option(value='Ingreso' selected=movimiento.tipoMonto === 'Ingreso') Ingreso
+                    option(value='Traspaso' selected=movimiento.tipoMonto === 'Traspaso') Traspaso
+
+            .mb-3
+                label(for='fecha') Fecha del Movimiento
+                input.form-control(type='date' name='fecha' value=movimiento.fecha.toISOString().split('T')[0] required)
+
+            .mb-3
+                label(for='descripcion') Descripción
+                textarea.form-control(name='descripcion' required)= movimiento.descripcion
+
+            //- Opciones dinámicas según el tipo de monto seleccionado
+            .dynamic-options
+
+            button.btn.btn-primary(type="submit") Actualizar Movimiento
+
+block footer
+    include ../includes/footer
+
+block scripts
+    script.
+        document.addEventListener('DOMContentLoaded', () => {
+            const tipoMontoSelect = document.querySelector('select[name="tipoMonto"]');
+            const dynamicOptionsDiv = document.querySelector('.dynamic-options');
+
+            const bancos = !{JSON.stringify(bancos)};
+            const categorias = !{JSON.stringify(categorias)};
+            const etiquetas = !{JSON.stringify(etiquetas)};
+            const terceros = !{JSON.stringify(terceros)};
+
+            const movimiento = !{JSON.stringify(movimiento)};
+
+            const createOptions = (items, selectedId) => items.map(item => `<option value="${item._id}" ${item._id === selectedId ? 'selected' : ''}>${item.name || item.description}</option>`).join('');
+
+            const updateDynamicOptions = () => {
+                const tipoMonto = tipoMontoSelect.value;
+                let html = '';
+
+                if (tipoMonto === 'Ingreso') {
+                    html += `
+                        <div class="mb-3">
+                            <label for="paymentMethod">¿Cómo te pagan?</label>
+                            <select class="form-control" name="paymentMethod" required>
+                                ${createOptions(bancos, movimiento.paymentMethod)}
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="categoria">Clasificación del Movimiento</label>
+                            <select class="form-control" name="categoria" required>
+                                ${createOptions(categorias, movimiento.categoria)}
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="etiqueta">Etiqueta de Agrupación</label>
+                            <select class="form-control" name="etiqueta" required>
+                                ${createOptions(etiquetas, movimiento.etiqueta)}
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="tercero">¿Quién paga?</label>
+                            <select class="form-control" name="tercero" required>
+                                ${createOptions(terceros, movimiento.tercero)}
+                            </select>
+                        </div>
+                    `;
+                } else if (tipoMonto === 'Gasto') {
+                    html += `
+                        <div class="mb-3">
+                            <label for="paymentMethod">¿Cómo pagas?</label>
+                            <select class="form-control" name="paymentMethod" required>
+                                ${createOptions(bancos, movimiento.paymentMethod)}
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="categoria">Clasificación del Movimiento</label>
+                            <select class="form-control" name="categoria" required>
+                                ${createOptions(categorias, movimiento.categoria)}
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="etiqueta">Etiqueta de Agrupación</label>
+                            <select class="form-control" name="etiqueta" required>
+                                ${createOptions(etiquetas, movimiento.etiqueta)}
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="tercero">¿A quién pagas?</label>
+                            <select class="form-control" name="tercero" required>
+                                ${createOptions(terceros, movimiento.tercero)}
+                            </select>
+                        </div>
+                    `;
+                } else if (tipoMonto === 'Traspaso') {
+                    html += `
+                        <div class="mb-3">
+                            <label for="cuentaOrigen">Cuenta de Origen</label>
+                            <select class="form-control" name="cuentaOrigen" required>
+                                ${createOptions(bancos, movimiento.cuentaOrigen)}
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="cuentaDestino">Cuenta de Destino</label>
+                            <select class="form-control" name="cuentaDestino" required>
+                                ${createOptions(bancos, movimiento.cuentaDestino)}
+                            </select>
+                        </div>
+                    `;
+                }
+
+                dynamicOptionsDiv.innerHTML = html;
+            };
+
+            // Trigger update on page load and on tipoMonto change
+            updateDynamicOptions();
+            tipoMontoSelect.addEventListener('change', updateDynamicOptions);
+        });

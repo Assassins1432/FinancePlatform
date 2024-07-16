@@ -1,0 +1,28 @@
+extends ../layouts/layout
+
+block sidebar
+
+    include ../includes/sidebar
+
+block navbar
+
+    include ../includes/navbar
+block content
+    .main-content
+        h1 Editar Contabilidad
+        if contabilidad
+            form(action=`/contabilidades/edit-cont/${contabilidad._id}?_method=PUT` method="POST")
+                .form-group
+                    label(for="name") Nombre
+                    input(type="text" name="name" value=contabilidad.name required)
+                .form-group
+                    label(for="description") Descripción
+                    textarea(name="description" required)= contabilidad.description
+                .form-group
+                    button(type="submit" class="btn btn-primary") Actualizar
+        else
+            p No se encontró la contabilidad a editar.
+
+block footer
+
+    include ../includes/footer

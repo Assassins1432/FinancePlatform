@@ -1,0 +1,26 @@
+extends ../layouts/layout
+
+block sidebar
+    include ../includes/sidebar
+
+block navbar
+    include ../includes/navbar
+
+block content
+    .main-content
+        h1 Nueva Etiqueta
+        form(action="/etiquetas/new-etiq" method="POST")
+            .mb-3
+                label(for="name") Nombre
+                input.form-control(type="text" name="name" required)
+            .mb-3
+                label(for="displayOrder") Orden de Visualización
+                select.form-control(name="displayOrderOption")
+                    option(value="Primero") Primero
+                    option(value="Último") Último
+                    each etiqueta in etiquetas
+                        option(value=`Después de ${etiqueta._id}`) Después de #{etiqueta.name}
+            button.btn.btn-primary(type="submit") Crear
+
+block footer
+    include ../includes/footer
